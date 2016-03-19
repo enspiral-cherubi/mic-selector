@@ -1,6 +1,6 @@
 {
   "name": "mic-selector",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "returns a <select> tag populated with <option> tags for all available microphone inputs",
   "main": "index.js",
   "scripts": {
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/enspiral-cherubi/mic-selector/issues"
   },
-  "homepage": "https://github.com/enspiral-cherubi/mic-selector#readme"
+  "homepage": "https://github.com/enspiral-cherubi/mic-selector#readme",
+  "dependencies": {
+    "jquery": "^2.2.2"
+  }
 }

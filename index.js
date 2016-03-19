@@ -1,18 +1,28 @@
-var micSelector = function () {
-  var selector = document.createElement('select')
+var $ = require('jquery')
+
+var micSelector = function (context) {
+  var $selector = $('<select></select>')
 
   MediaStreamTrack.getSources(function (sources) {
     sources.forEach(function (source, i) {
       if (source.kind === 'audio') {
-        var option = document.createElement('option')
-        option.value = source.id
-        option.text = source.label || 'input ' + (i + 1)
-        selector.appendChild(option)
+        var val = source.id, text = source.label || 'input ' + (i + 1)
+        $option = $('<option></option>').val(val).text(text)
+        $selector.append($option)
       }
     })
   })
 
-  return selector
+  $selector.change(function (sourceId) {
+    navigator.mediaDevices.getUserMedia({
+      audio: { optional: [{ sourceId: sourceId }] }
+    }).then(function (stream) {
+      var node = context.createMediaStreamSource(stream)
+      $selector.trigger('bang', node)
+    })
+  })
+
+  return $selector[0]
 }
 
 module.exports = micSelector
