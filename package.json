@@ -1,0 +1,29 @@
+{
+  "name": "mic-selector",
+  "version": "1.0.0",
+  "description": "returns a <select> tag populated with <option> tags for all available microphone inputs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enspiral-cherubi/mic-selector.git"
+  },
+  "keywords": [
+    "microphone",
+    "mic",
+    "select",
+    "selector",
+    "web",
+    "audio",
+    "api",
+    "audio"
+  ],
+  "author": "data-doge <eugene@enspiral.com> (http://fuckafucka.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enspiral-cherubi/mic-selector/issues"
+  },
+  "homepage": "https://github.com/enspiral-cherubi/mic-selector#readme"
+}
