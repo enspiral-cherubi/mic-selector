@@ -22,7 +22,7 @@ var micSelector = function (context) {
     })
   })
 
-  return $selector[0]
+  return $selector
 }
 
 module.exports = micSelector

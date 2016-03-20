@@ -1,7 +1,6 @@
 # mic-selector
 
-returns a `select` element populated with `option` elements for all available microphone inputs. on change, the element triggers a 'bang' event with a `MediaStreamAudioSourceNode` for the chosen input.
-
+returns a jQuery `select` element populated with `option` elements for all available microphone inputs. on change, the element triggers a 'bang' event with a `MediaStreamAudioSourceNode` for the chosen input.
 
 ## install
 
@@ -12,9 +11,7 @@ returns a `select` element populated with `option` elements for all available mi
 ```js
 var $ = require('jquery')
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)()
-var micSelector = require('mic-selector')(audioCtx)
-
-var $micSelector = $(micSelector)
+var $micSelector = require('mic-selector')(audioCtx)
 
 $micSelector.on('bang', function (e, node) {
   node.connect(audioCtx.destination)
