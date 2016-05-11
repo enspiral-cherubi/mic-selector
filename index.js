@@ -13,16 +13,33 @@ var micSelector = function (context) {
     })
   })
 
-  $selector.change(function (sourceId) {
-    navigator.mediaDevices.getUserMedia({
-      audio: { optional: [{ sourceId: sourceId }] }
-    }).then(function (stream) {
-      var node = context.createMediaStreamSource(stream)
-      $selector.trigger('bang', node)
-    })
+  $selector.change(function (e) {
+    // taken from https://www.airtightinteractive.com/demos/js/pareidolia/
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia
+
+    sourceId = this.value
+
+    if (navigator.getUserMedia) {
+  		navigator.getUserMedia({audio: { optional: [{ sourceId: sourceId }] }},
+         onSuccess,
+          onError)
+  	} else {
+      console.log('couldnt getUserMedia')
+  	}
   })
+
+  function onSuccess (stream) {
+    var node = context.createMediaStreamSource(stream)
+    $selector.trigger('bang', node)
+  }
+
+  function onError (err) {
+    console.log('mysterious sound error')
+  }
+
 
   return $selector
 }
+
 
 module.exports = micSelector

@@ -1,6 +1,6 @@
 {
   "name": "mic-selector",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "returns jQuery a <select> tag populated with <option> tags for all available microphone inputs",
   "main": "index.js",
   "scripts": {
